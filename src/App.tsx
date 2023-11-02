@@ -3,8 +3,8 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import { useState } from 'react';
 import { FlashcardT } from './types/flashcard';
-import AllFlashcard from './pages/AllFlashCard';
 import DetailedFlashcard from './pages/DetailedFlashcard';
+import AllFlashcard from './pages/FlashcardListPage';
 
 function App() {
 	const [flashcards, setFlashcards] = useState<FlashcardT[]>(
@@ -14,9 +14,20 @@ function App() {
 	return (
 		<Routes>
 			<Route path='/' element={<Header />}>
-				<Route index element={<Home flashcards={flashcards} setFlashcards={setFlashcards}/>} />
-				<Route path='/flashcards' element={<AllFlashcard flashcards={flashcards}/>} />
-				<Route path='/flashcards/:id' element={<DetailedFlashcard flashcards={flashcards} />} />
+				<Route
+					index
+					element={
+						<Home flashcards={flashcards} setFlashcards={setFlashcards} />
+					}
+				/>
+				<Route
+					path='/flashcards'
+					element={<AllFlashcard flashcards={flashcards} />}
+				/>
+				<Route
+					path='/flashcards/:id'
+					element={<DetailedFlashcard flashcards={flashcards} />}
+				/>
 			</Route>
 		</Routes>
 	);
